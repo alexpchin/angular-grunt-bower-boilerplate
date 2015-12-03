@@ -1,0 +1,26 @@
+{
+  "name": "Minima Angular App",
+  "description": "Minimal Angular App",
+  "main": "",
+  "authors": [
+    "Alex Chin"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/alexpchin/minimal-angular-app",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/public/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-jwt": "~0.0.9",
+    "angular-resource": "~1.4.8",
+    "angular-ui-router": "ui-router#~0.2.15",
+    "angular": "~1.4.8"
+  }
+}
