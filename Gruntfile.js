@@ -4,6 +4,14 @@ module.exports = function(grunt) {
   var config = grunt.file.exists('./config.json') ? grunt.file.readJSON('./config.json') : {};
 
   grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
+    sass: {
+      dist: {
+        files: {
+          'app/public/stylesheets/style.css' : 'app/public/stylesheets/**/*.scss'
+        }
+      }
+    },
     browserify: {
       dist: {
         files: browserifyFiles('index.js', [
@@ -30,14 +38,12 @@ module.exports = function(grunt) {
       '!app/public/javascripts/index.js',
       'app/public/stylesheets/**/*.css'
       ],
+      css: {
+        files: 'app/public/stylesheets/**/*.scss',
+        tasks: ['sass']
+      },
       tasks: ['default']
-    },
-    // gen: {
-    //   config: config,
-    //   controller: 'controllers',
-    //   service:    'services',
-    //   directive:  'directives'
-    // }
+    }
   });
 
   require('load-grunt-tasks')(grunt, {
@@ -51,6 +57,8 @@ module.exports = function(grunt) {
   });
 
   grunt.loadTasks('build/tasks');
-  grunt.registerTask('default', 'clean and browserify', ['clean', 'browserify', 'cssmin', 'watch']);
+  grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.registerTask('default', ['clean', 'browserify', 'cssmin', 'watch']);
 
 }
