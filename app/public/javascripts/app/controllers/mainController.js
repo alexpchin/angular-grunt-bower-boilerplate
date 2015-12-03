@@ -2,12 +2,13 @@
 
   'use strict';
 
+  MainController.$inject = [];
   function MainController() {
+    this.test = "Hello World";
   }
   
-  MainController.$inject = [];
+  angular
+    .module("app")
+    .controller('MainController', MainController);
 
-  // this will become
-  this.controller('MainController', MainController);
-
-}).call(require('./index.js'));
+})();

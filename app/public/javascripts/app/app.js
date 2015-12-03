@@ -3,10 +3,6 @@
 
   angular
     .module("app", [
-      'app.controllers'
+      'ui.router'
     ]);
-
-  module.exports = {
-    main: app
-  };
 })();

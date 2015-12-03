@@ -15,9 +15,9 @@ module.exports = function(grunt) {
     browserify: {
       dist: {
         files: browserifyFiles('index.js', [
-          { path: 'angular/angular.js', component: true},
-          { path: 'angular-route/angular-route.js', component: true},
-          { path: 'jquery/dist/jquery.js', component: true},
+          { path: 'angular/angular.js', component: true },
+          { path: 'angular-ui-router/release/angular-ui-router.js', component: true },
+          { path: 'angular-resource/angular-resource-min.js', component: true },
           { path: '**/*.js' },
           { path: '!index.js' }
         ])
