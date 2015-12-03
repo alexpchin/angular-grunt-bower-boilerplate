@@ -1,6 +1,6 @@
 module.exports = function(grunt) {
 
-  var browserifyFiles = require('./build/helpers/browserify_files.js')(grunt);
+  var browserifyFiles = require('./build/helpers/browserify.js')(grunt);
   var config = grunt.file.exists('./config.json') ? grunt.file.readJSON('./config.json') : {};
 
   grunt.initConfig({
@@ -12,7 +12,7 @@ module.exports = function(grunt) {
           { path: 'jquery/dist/jquery.js', component: true},
           { path: '**/*.js' },
           { path: '!index.js' }
-        ]);
+        ])
       }
     },
     cssmin: {
@@ -32,12 +32,12 @@ module.exports = function(grunt) {
       ],
       tasks: ['default']
     },
-    gen: {
-      config: config,
-      controller: 'controllers',
-      service:    'services',
-      directive:  'directives'
-    }
+    // gen: {
+    //   config: config,
+    //   controller: 'controllers',
+    //   service:    'services',
+    //   directive:  'directives'
+    // }
   });
 
   require('load-grunt-tasks')(grunt, {
