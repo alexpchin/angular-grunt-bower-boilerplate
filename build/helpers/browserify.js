@@ -1,4 +1,4 @@
-module.exports = function (grunt) {
+module.exports = function(grunt) {
   return function(target, dependencies) {
     if (grunt.file.exists('./config.json')) {
       var config      = grunt.file.readJSON('./config.json');
@@ -14,7 +14,7 @@ module.exports = function (grunt) {
           return prePath + '/' + dependency.path;
         }
       });
-      
+
       return files;
     }
   };

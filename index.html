@@ -5,8 +5,9 @@
   <link rel="stylesheet" type="text/css" href="app/public/stylesheets/app.min.css">
   <script type="text/javascript" src="./app/public/javascripts/index.js"></script>
 </head>
-<body ng-controller="MainController as main">
-  {{ 1+1 }}
-  {{ main.test }}
+<div ng-include="'app/public/views/shared/header.html'"></div>
+<body>
+  <main ui-view></main>
 </body>
+<div ng-include="'app/public/views/shared/footer.html'"></div>
 </html>

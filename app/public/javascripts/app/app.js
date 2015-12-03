@@ -1,8 +1,11 @@
 (function(){
   'use strict';
 
-  angular
-    .module("app", [
-      'ui.router'
-    ]);
+  var dependencies = [
+    'ui.router',
+    'ngResource',
+    'angular-jwt'
+  ];
+
+  module.exports = angular.module("app", dependencies);
 })();
