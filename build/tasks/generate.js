@@ -26,7 +26,7 @@ module.exports = function (grunt) {
     var filePath = grunt.template.process('<%= base %>/<%= targetFldr %>/<%= targetName %>.js', {data: data});
     
     grunt.file.write(filePath, makeFile(fileData));
-    
+
     if (target === 'controller'){
       grunt.file.mkdir(config.root + '/views/' + targetName);
     } else if (target === 'directive') {

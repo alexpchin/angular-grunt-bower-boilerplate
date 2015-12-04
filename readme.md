@@ -21,8 +21,10 @@ grunt
 
 ## Generators
 
+You can use `grunt -h` to see a list of available tasks:
+
 To generate a controller, you need to:
 
 ```bash
-
+grunt controller
 ```
