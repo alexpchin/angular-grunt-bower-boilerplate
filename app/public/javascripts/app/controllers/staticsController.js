@@ -3,7 +3,7 @@
   'use strict';
 
   StaticsController.$inject = [];
-  function StaticsController() {
+  function StaticsController(API) {
   }
   
   angular

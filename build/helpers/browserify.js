@@ -1,4 +1,11 @@
 module.exports = function(grunt) {
+
+  // This task is going to load all of the bower components
+  // And all of the javascripts/app files
+  // And return an array of all of the filenames
+  // So thay grunt-browserify can 
+  // Using this so that we can do /**/*.js from our 
+
   return function(target, dependencies) {
     if (grunt.file.exists('./config.json')) {
       var config      = grunt.file.readJSON('./config.json');
