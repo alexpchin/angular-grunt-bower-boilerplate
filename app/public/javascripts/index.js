@@ -33495,11 +33495,10 @@ void 0===c?d&&"get"in d&&null!==(e=d.get(a,b))?e:(e=n.find.attr(a,b),null==e?voi
 }).call(require('../app.js'))
 },{"../app.js":7}],11:[function(require,module,exports){
 (function () {
-
   'use strict';
 
   StaticsController.$inject = [];
-  function StaticsController(API) {
+  function StaticsController() {
   }
   
   angular
@@ -33509,12 +33508,10 @@ void 0===c?d&&"get"in d&&null!==(e=d.get(a,b))?e:(e=n.find.attr(a,b),null==e?voi
 })();
 },{}],12:[function(require,module,exports){
 (function () {
-
   'use strict';
 
   UsersController.$inject = [];
   function UsersController() {
-    this.test = "Hello World";
   }
   
   angular

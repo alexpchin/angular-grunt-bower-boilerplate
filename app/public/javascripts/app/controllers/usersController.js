@@ -1,10 +1,8 @@
 (function () {
-
   'use strict';
 
   UsersController.$inject = [];
   function UsersController() {
-    this.test = "Hello World";
   }
   
   angular
