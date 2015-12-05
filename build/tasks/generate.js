@@ -3,7 +3,7 @@ module.exports = function (grunt) {
   // In Gruntfile, the structure of the tasks are:
   //
   // angular: {
-  //   taskName:   directoryLocation,
+  //   taskName: directoryLocation,
   // }
 
   // Example Usage:
@@ -37,9 +37,9 @@ module.exports = function (grunt) {
     
     var fileData = {
       app: config.normAppName,
-      name: camelCaseName, 
-      parent: config.main,
-      type: target
+      name: camelCaseName,
+      type: target,
+      parent: config.main
     };
 
     // Use the makeFile helper to create the file
@@ -49,7 +49,7 @@ module.exports = function (grunt) {
     if (target === 'controller'){
       grunt.file.mkdir(config.root + '/views/' + targetName);
     } else if (target === 'directive') {
-      grunt.file.write(config.root + '/views/' + target + '/' + targetName + '.html')
+      grunt.file.write(config.root + '/views/' + targetFolder + '/' + targetName + '.html')
     }
 
   });

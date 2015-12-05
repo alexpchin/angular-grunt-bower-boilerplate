@@ -5,8 +5,5 @@
   function UsersController() {
   }
   
-  angular
-    .module("app")
-    .controller('UsersController', UsersController);
-
-})();
+  this.controller('usersController', UsersController);
+}).call(require('../app.js'));

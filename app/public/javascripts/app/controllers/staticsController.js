@@ -5,8 +5,5 @@
   function StaticsController() {
   }
   
-  angular
-    .module("app")
-    .controller('StaticsController', StaticsController);
-
-})();
+  this.controller('staticsController', StaticsController);
+}).call(require('../app.js'));
