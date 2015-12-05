@@ -47,12 +47,12 @@ grunt g:factory --name=factory_name
 grunt g:service --name=service_name
 ```
 
-### provider
+### constant
 
 ```bash
-grunt g:provider --name=service_name
+grunt g:constant --name=test --key=API --value=http://localhost:3000 --type=string
+grunt g:constant --name=twitter --key=TWITTER --value=process.env.TWITTER_CLIENT_ID
 ```
-
 
 ### directive
 

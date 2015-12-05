@@ -1,5 +1,5 @@
 module.exports = function(grunt) {
-
+  'use strict';
   // In Gruntfile, the structure of the tasks are:
   //
   // g: {
@@ -18,6 +18,17 @@ module.exports = function(grunt) {
     if (type === "constant" || type === "value") {
       var key   = grunt.option('key');
       var value = grunt.option('value');
+      switch (grunt.option('type')) {
+        case "string":
+          value = "'"+value+"'";
+          break;
+        case "function":
+          value = function(){};
+          break;
+        case "object":
+          value = {};
+          break;
+      } 
     }
 
     var typeFolder    = this.data;

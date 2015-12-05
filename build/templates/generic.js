@@ -3,7 +3,7 @@ module.exports = function(data){
   if (data.type === 'constant' || data.type === 'value' ) {
   tpl = "(function() {\n" +
         "  'use strict';\n\n" +
-        "  this.<%= type %>('<%= key %>', '<%= value %>');\n" +
+        "  this.<%= type %>('<%= key %>', <%= value %>);\n" +
         "}).call(require('<%= parent %>'));";
   } else {
   tpl = "(function() {\n" +
