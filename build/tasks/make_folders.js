@@ -55,6 +55,7 @@ module.exports = function (grunt) {
                     "constants",
                     "controllers",
                     "directives",
+                    "factories",
                     "models",
                     "services",
                     "values"

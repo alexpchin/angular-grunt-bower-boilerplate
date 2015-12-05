@@ -41,6 +41,7 @@ module.exports = function(grunt) {
       'app/public/javascripts/**/*.js',
       '!app/public/javascripts/index.js',
       'app/public/stylesheets/**/*.css',
+      'build/**/*.js',
       'package.json'
       ],
       css: {
@@ -49,11 +50,11 @@ module.exports = function(grunt) {
       },
       tasks: ['default']
     },
-    gen: {
-      config: config,
+    angular: {
+      config:     'configs',
       controller: 'controllers',
-      service: 'services',
-      directive: 'directives'
+      service:    'services',
+      directive:  'directives'
     }
   });
 
@@ -62,11 +63,10 @@ module.exports = function(grunt) {
     scope: 'devDependencies'
   });
 
-  grunt.registerTask('clean', 'remove compiled files', function () {
+  grunt.registerTask('clean', 'remove compiled files', function() {
     grunt.file.delete('app/public/javascripts/index.js');
     grunt.file.delete('app/public/stylesheets/app.min.css');
   });
-
   grunt.loadTasks('build/tasks');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');

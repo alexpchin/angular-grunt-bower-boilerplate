@@ -8,4 +8,4 @@
   ];
 
   module.exports = angular.module("app", dependencies);
-})(); 
+})();
