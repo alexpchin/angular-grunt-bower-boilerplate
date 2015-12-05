@@ -6,9 +6,11 @@ module.exports = function (grunt) {
 
   grunt.registerTask('config.json', 'create config.json file', function(){
     var camelCase   = require('../helpers/camelCase.js');
-    var root        = grunt.option("root") || 'app/public';
-    var appName     = grunt.option("name") || 'app';
-    var parent      = grunt.option("main") || "./app.js";
+    var humanize    = require('../helpers/humanize.js');
+    var root        = grunt.option("root")   || 'app/public';
+    var appName     = grunt.option("name")   || 'app';
+    var name        = humanize(appName)      || 'App';
+    var parent      = grunt.option("main")   || "./app.js";
     var router      = grunt.option("router") || 'ui.router';
     var normAppName = camelCase(appName);
     var jsFolder    = root + '/javascripts';
@@ -41,14 +43,10 @@ module.exports = function (grunt) {
     var config = grunt.file.readJSON('./config.json');
     var base = config.base;
     var folders = [
-                    "configs",
-                    "constants",
+                    "config",
                     "controllers",
-                    "directives",
-                    "factories",
                     "models",
                     "services",
-                    "values"
                   ]
 
     folders.forEach(function (folder) {
@@ -86,8 +84,48 @@ module.exports = function (grunt) {
                       }
                     }
     var routerTpl = grunt.template.process(tpl, data);
-    grunt.file.write(config.base + '/configs/router.js', routerTpl);
+    grunt.file.write(config.base + '/config/router.js', routerTpl);
   });
 
-  grunt.registerTask('start', 'create app and angular folders', ['config.json', 'publicFolders', 'appFolders', 'mainFile', 'routerFile']);
+  grunt.registerTask('constantsFile', 'create constants file', function(){
+    var config    = grunt.file.readJSON('./config.json');
+    var tpl       = require('../templates/constant_or_value.js');
+    var data      = {
+                      data: {
+                        parent: config.parent,
+                        type: "constant"
+                      }
+                    }
+    var constantsTpl = grunt.template.process(tpl, data);
+    grunt.file.write(config.base + '/services/constants.js', constantsTpl);
+  });
+
+  grunt.registerTask('valuesFile', 'create values file', function(){
+    var config    = grunt.file.readJSON('./config.json');
+    var tpl       = require('../templates/constant_or_value.js');
+    var data      = {
+                      data: {
+                        parent: config.parent,
+                        type: "value"
+                      }
+                    }
+    var constantsTpl = grunt.template.process(tpl, data);
+    grunt.file.write(config.base + '/services/values.js', constantsTpl);
+  });
+
+  grunt.registerTask('index.html', 'create a root index.html file', function(){
+    var config    = grunt.file.readJSON('./config.json');
+    var tpl       = require("../templates/index.html.js");
+    var data      = {
+                      data: {
+                        root: config.root,
+                        appName: config.appName,
+                        name: config.name
+                      }
+                    }
+    var indexTpl = grunt.template.process(tpl, data);
+    grunt.file.write('./index.html', indexTpl);
+  });
+
+  grunt.registerTask('start', 'create app and angular folders', ['config.json', 'publicFolders', 'appFolders', 'mainFile', 'routerFile', 'constantsFile', 'valuesFile']);
 }
