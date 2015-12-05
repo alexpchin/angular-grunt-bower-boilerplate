@@ -36,7 +36,7 @@ module.exports = function(grunt) {
     var filePath = grunt.template.process(template, {data: data});
     
     var fileData = {
-      app: config.normAppName,
+      app: config.appName,
       name: camelCaseName,
       type: target,
       parent: config.main

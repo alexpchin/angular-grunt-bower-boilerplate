@@ -8,15 +8,15 @@ var tpl = "(function(){\n" +
           "      var action     = splitPair[1];\n\n" +
           "      return {\n" +
           "        url: '/' + action,\n" +
-          "        templateUrl: '<%= root %>views/' + resource + '/' + action + '.html',\n"+
+          "        templateUrl: '<%= root %>/views/' + resource + '/' + action + '.html',\n"+
           "        controller: resource + 'Controller as ' + resource\n" +
           "      }\n" +
           "    }\n\n" +
           "    $stateProvider\n" +
           "      .state('home',  helper('examples#action'))\n\n" +
-          "      $urlRouterProvider.otherwise('/'');\n" +
+          "      $urlRouterProvider.otherwise('/');\n" +
           "  }\n\n"+
           "  this.config(Router);\n" +
-          "}).call(require(<%= parent %>));"
+          "}).call(require('<%= parent %>'));"
 
 module.exports = tpl;

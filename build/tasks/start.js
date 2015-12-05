@@ -1,12 +1,14 @@
 module.exports = function (grunt) {
 
-  // grunt start --name=chooseAppName --root=otherThanDefault
+  // Usage: 
+  //
+  // grunt start --name=minimal_app --root=otherThanDefault
 
   grunt.registerTask('config.json', 'create config.json file', function(){
     var camelCase   = require('../helpers/camelCase.js');
     var root        = grunt.option("root") || 'app/public';
     var appName     = grunt.option("name") || 'app';
-    var main        = grunt.option("main") || "./app.js";
+    var parent      = grunt.option("main") || "./app.js";
     var router      = grunt.option("router") || 'ui.router';
     var normAppName = camelCase(appName);
     var jsFolder    = root + '/javascripts';
@@ -14,7 +16,8 @@ module.exports = function (grunt) {
     var config      = {
                         root: root,
                         base: base,
-                        main: 
+                        parent: parent,
+                        router: router,
                         appName: normAppName,
                         jsFolder: jsFolder
                       };
@@ -35,6 +38,8 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('appFolders', 'create angular folders', function() {
+    var config = grunt.file.readJSON('./config.json');
+    var base = config.base;
     var folders = [
                     "configs",
                     "constants",
@@ -48,8 +53,6 @@ module.exports = function (grunt) {
 
     folders.forEach(function (folder) {
       grunt.file.mkdir(base + '/' + folder);
-      var gitKeep = base + '/' + folder + '/.gitkeep.js';
-      grunt.file.write(gitKeep, "");
 
       // ! Deprecated
       // Used to use an index.js as a seperate angular.module -> app.controllers
@@ -59,12 +62,12 @@ module.exports = function (grunt) {
     });
   });
 
-  grunt.registerTask('mainFile', 'create main file', function(){
+  grunt.registerTask('mainFile', 'create main angular file', function(){
     var config = grunt.file.readJSON('./config.json');
     var tpl    = require('../templates/app.js');
     var data   = { 
                     data: {
-                      app: config.normAppName,
+                      app: config.appName,
                       router: config.router
                     } 
                  }
@@ -78,11 +81,12 @@ module.exports = function (grunt) {
     var data      = { 
                       data: {
                         root: config.root,
+                        router: config.router,
                         parent: config.parent
                       }
                     }
     var routerTpl = grunt.template.process(tpl, data);
-    grunt.file.write(config.base + 'configs/router.js', routerTpl);
+    grunt.file.write(config.base + '/configs/router.js', routerTpl);
   });
 
   grunt.registerTask('start', 'create app and angular folders', ['config.json', 'publicFolders', 'appFolders', 'mainFile', 'routerFile']);
