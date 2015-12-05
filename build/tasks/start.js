@@ -113,7 +113,7 @@ module.exports = function (grunt) {
     grunt.file.write(config.base + '/services/values.js', constantsTpl);
   });
 
-  grunt.registerTask('index.html', 'create a root index.html file', function(){
+  grunt.registerTask('indexFile', 'create a root index.html file', function(){
     var config    = grunt.file.readJSON('./config.json');
     var tpl       = require("../templates/index.html.js");
     var data      = {
@@ -127,5 +127,5 @@ module.exports = function (grunt) {
     grunt.file.write('./index.html', indexTpl);
   });
 
-  grunt.registerTask('start', 'create app and angular folders', ['config.json', 'publicFolders', 'appFolders', 'mainFile', 'routerFile', 'constantsFile', 'valuesFile']);
+  grunt.registerTask('start', 'create app and angular folders', ['config.json', 'publicFolders', 'appFolders', 'mainFile', 'routerFile', 'constantsFile', 'valuesFile', 'indexFile']);
 }
