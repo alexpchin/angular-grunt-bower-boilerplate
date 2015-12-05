@@ -59,17 +59,14 @@ module.exports = function(grunt) {
     }
   });
 
+  grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+
+  // https://github.com/sindresorhus/load-grunt-tasks
   require('load-grunt-tasks')(grunt, {
     pattern: 'grunt-*',
     scope: 'devDependencies'
   });
 
-  grunt.registerTask('clean', 'remove compiled files', function() {
-    grunt.file.delete('app/public/javascripts/index.js');
-    grunt.file.delete('app/public/stylesheets/app.min.css');
-  });
   grunt.loadTasks('build/tasks');
-  grunt.loadNpmTasks('grunt-contrib-sass');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.registerTask('default', ['clean', 'browserify', 'cssmin', 'watch']);
 }
