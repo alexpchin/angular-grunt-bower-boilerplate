@@ -1,7 +1,6 @@
 module.exports = function(grunt) {
 
   var browserifyHelper = require('./build/helpers/browserify.js')(grunt);
-  var config = grunt.file.exists('./config.json') ? grunt.file.readJSON('./config.json') : {};
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -56,6 +55,10 @@ module.exports = function(grunt) {
       directive:  'directives',
       factory:    'factories',
       service:    'services',
+      provider:   'providers',
+      constant:   'constants',
+      value:      'values',
+      decorator:  'decorators'
     }
   });
 

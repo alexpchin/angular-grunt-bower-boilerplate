@@ -87,31 +87,31 @@ module.exports = function (grunt) {
     grunt.file.write(config.base + '/config/router.js', routerTpl);
   });
 
-  grunt.registerTask('constantsFile', 'create constants file', function(){
-    var config    = grunt.file.readJSON('./config.json');
-    var tpl       = require('../templates/constant_or_value.js');
-    var data      = {
-                      data: {
-                        parent: config.parent,
-                        type: "constant"
-                      }
-                    }
-    var constantsTpl = grunt.template.process(tpl, data);
-    grunt.file.write(config.base + '/services/constants.js', constantsTpl);
-  });
+  // grunt.registerTask('constantsFile', 'create constants file', function(){
+  //   var config    = grunt.file.readJSON('./config.json');
+  //   var tpl       = require('../templates/constant_or_value.js');
+  //   var data      = {
+  //                     data: {
+  //                       parent: config.parent,
+  //                       type: "constant"
+  //                     }
+  //                   }
+  //   var constantsTpl = grunt.template.process(tpl, data);
+  //   grunt.file.write(config.base + '/services/constants.js', constantsTpl);
+  // });
 
-  grunt.registerTask('valuesFile', 'create values file', function(){
-    var config    = grunt.file.readJSON('./config.json');
-    var tpl       = require('../templates/constant_or_value.js');
-    var data      = {
-                      data: {
-                        parent: config.parent,
-                        type: "value"
-                      }
-                    }
-    var constantsTpl = grunt.template.process(tpl, data);
-    grunt.file.write(config.base + '/services/values.js', constantsTpl);
-  });
+  // grunt.registerTask('valuesFile', 'create values file', function(){
+  //   var config    = grunt.file.readJSON('./config.json');
+  //   var tpl       = require('../templates/constant_or_value.js');
+  //   var data      = {
+  //                     data: {
+  //                       parent: config.parent,
+  //                       type: "value"
+  //                     }
+  //                   }
+  //   var constantsTpl = grunt.template.process(tpl, data);
+  //   grunt.file.write(config.base + '/services/values.js', constantsTpl);
+  // });
 
   grunt.registerTask('indexFile', 'create a root index.html file', function(){
     var config    = grunt.file.readJSON('./config.json');
@@ -127,5 +127,5 @@ module.exports = function (grunt) {
     grunt.file.write('./index.html', indexTpl);
   });
 
-  grunt.registerTask('start', 'create app and angular folders', ['config.json', 'publicFolders', 'appFolders', 'mainFile', 'routerFile', 'constantsFile', 'valuesFile', 'indexFile']);
+  grunt.registerTask('start', 'create app and angular folders', ['config.json', 'publicFolders', 'appFolders', 'mainFile', 'routerFile', 'indexFile']);
 }

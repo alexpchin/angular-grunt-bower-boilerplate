@@ -50,8 +50,9 @@ grunt g:service --name=service_name
 ### provider
 
 ```bash
-grunt g:provider --name=provider_name
+grunt g:provider --name=service_name
 ```
+
 
 ### directive
 
