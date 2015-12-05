@@ -9,8 +9,9 @@ module.exports = function(grunt) {
   // Example Usage:
   // grunt g:controller --name=mainController
 
-  var makeFile  = require('../helpers/generator.js')(grunt);
-  var normalize = require('../helpers/camelCase.js');
+  var makeFile   = require('../helpers/generator.js')(grunt);
+  var camelCase  = require('../helpers/camelCase.js');
+  var capitalize = require('../helpers/capitalize.js');
 
   grunt.registerMultiTask('g', 'angular generators', function() {
     if (!grunt.option('name')) {
@@ -19,27 +20,18 @@ module.exports = function(grunt) {
     }
 
     var target        = this.target;
+    var targetCaps    = capitalize(target);
     var targetFolder  = this.data;
     var targetName    = grunt.option('name');
-    var camelCaseName = normalize(targetName);
+    var camelCaseName = camelCase(targetName);
     var config        = grunt.file.readJSON('./config.json');
+    var filePath      = config.base + "/" + targetFolder + "/" + targetName + targetCaps + ".js";
 
-    var data = {
-      base: config.base,
-      targetFolder: targetFolder,
-      targetName: targetName
-    };
-
-    // Process a Lo-Dash template string.
-    // https://lodash.com/docs#template
-    var template = '<%= base %>/<%= targetFolder %>/<%= targetName %>.js';
-    var filePath = grunt.template.process(template, {data: data});
-    
     var fileData = {
       app: config.appName,
       name: camelCaseName,
       type: target,
-      parent: config.main
+      parent: config.parent
     };
 
     // Use the makeFile helper to create the file

@@ -21,10 +21,40 @@ To start a new app run:
 grunt start --name=chooseName
 ```
 
-## Setup 
+There are additional options.
 
-To run the app, you need to run:
+One you have done this, you can generate anyone of these:
+
+### controller
 
 ```bash
-grunt
+grunt g:controller --name=main
 ```
+
+This will create a controller javascript file and a view directory.
+
+### factory
+
+```bash
+grunt g:factory --name=factory_name
+```
+
+### service
+
+```bash
+grunt g:service --name=service_name
+```
+
+### provider
+
+```bash
+grunt g:provider --name=provider_name
+```
+
+### directive
+
+```bash
+grunt g:directive --name=directive_name
+```
+
+This will create both a javascript file and a corresponding view file found in `app/views/directives`.
