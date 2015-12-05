@@ -1,18 +1,18 @@
-module.exports = function (grunt) {
+module.exports = function(grunt) {
 
   // In Gruntfile, the structure of the tasks are:
   //
-  // angular: {
+  // g: {
   //   taskName: directoryLocation,
   // }
 
   // Example Usage:
-  // grunt angular:controller --name=mainController
+  // grunt g:controller --name=mainController
 
-  var makeFile  = require('../helpers/make_file.js')(grunt);
-  var normalize = require('../helpers/normalize.js');
+  var makeFile  = require('../helpers/generator.js')(grunt);
+  var normalize = require('../helpers/camelCase.js');
 
-  grunt.registerMultiTask('angular', 'angular generators', function() {
+  grunt.registerMultiTask('g', 'angular generators', function() {
     if (!grunt.option('name')) {
       var command = 'grunt ' + this.name + ':' + this.target;
       return grunt.warn('Please add a name like this "'+command+' --name=insertNameHere".');

@@ -2,7 +2,6 @@
   "root": "app/public",
   "jsFolder": "app/public/javascripts",
   "appName": "app",
-  "normAppName": "app",
   "main": "./app.js",
   "base":"app/public/javascripts/app"
 }

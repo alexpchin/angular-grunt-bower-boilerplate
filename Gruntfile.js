@@ -50,11 +50,12 @@ module.exports = function(grunt) {
       },
       tasks: ['default']
     },
-    angular: {
+    g: {
       config:     'configs',
       controller: 'controllers',
+      directive:  'directives',
+      factory:    'factories',
       service:    'services',
-      directive:  'directives'
     }
   });
 
