@@ -25,17 +25,20 @@ module.exports = function(grunt) {
     var targetName    = grunt.option('name');
     var camelCaseName = camelCase(targetName);
     var config        = grunt.file.readJSON('./config.json');
+    var capitalize    = require("./capitalize");
+
+    // Setup template data
+    var data          = {}
+    data.app          = config.appName || '';
+    data.name         = camelCaseName;
+    data.type         = target;
+    data.parent       = config.parent;
+    data.constructor  = capitalize(data.name) || 'MyFunc';
+
+    var tpl           = require("../templates/generic");
+    var fileTpl       = grunt.template.process(tpl, { data: data });
     var filePath      = config.base + "/" + targetFolder + "/" + targetName + targetCaps + ".js";
-
-    var fileData = {
-      app: config.appName,
-      name: camelCaseName,
-      type: target,
-      parent: config.parent
-    };
-
-    // Use the makeFile helper to create the file
-    grunt.file.write(filePath, makeFile(fileData));
+    grunt.file.write(filePath, makeFile(fileTpl));
 
     // Some generators need to make another file
     if (target === 'controller'){

@@ -11,6 +11,8 @@ The front-end framework is `bootstrap#v4.0.0-alpha`.
 
 It uses IIFE's to manage global variables.
 
+Uses Lo-Dash template strings for the grunt [templates](https://lodash.com/docs#template).
+
 ## Generators
 
 You can use `grunt -h` to see a list of available tasks:
