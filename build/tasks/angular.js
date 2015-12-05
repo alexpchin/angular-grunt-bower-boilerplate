@@ -13,35 +13,34 @@ module.exports = function(grunt) {
   var capitalize = require('../helpers/capitalize.js');
 
   grunt.registerMultiTask('g', 'angular generators', function() {
-    if (!grunt.option('name')) {
-      var command = 'grunt ' + this.name + ':' + this.target;
-      return grunt.warn('Please add a name like this "'+command+' --name=insertNameHere".');
-    }
-
     var type = this.target;
 
-    if (type === "constant") {
-      return grunt.warn('Constant not implemented yet...');
-    } else if (type === "value") {
-      return grunt.warn('Value not implemented yet...');
+    if (type === "constant" || type === "value") {
+      var key   = grunt.option('key');
+      var value = grunt.option('value');
     }
 
     var typeFolder    = this.data;
     var typeCaps      = capitalize(type);
     var name          = grunt.option('name');
-    var camelCaseName = camelCase(name);
+    if (name) {
+      var camelCaseName = camelCase(name);
+      var constructor   = capitalize(name)
+    }
     var config        = grunt.file.readJSON('./config.json');
 
     // Setup template data
     var data          = {};
     data.name         = camelCaseName;
     data.type         = type;
-    data.constructor  = capitalize(data.name) || 'ConstructorFunc';
+    data.constructor  = constructor || 'ConstructorFunc';
     data.app          = config.appName;
     data.parent       = config.parent;
+    if (key) data.key = key;  
+    if (value) data.value = value;
 
     // Make template
-    var tpl           = require("../templates/generic");
+    var tpl           = require("../templates/generic")(data);
     var fileTpl       = grunt.template.process(tpl, { data: data });
     var filePath      = config.base + "/" + typeFolder + "/" + name + typeCaps + ".js";
     grunt.file.write(filePath, fileTpl);
