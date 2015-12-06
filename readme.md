@@ -4,7 +4,6 @@ Minimal Angular App
 This is a basic angular app using:
 
 - ui.router
-- ngResource
 - angular-jwt
 
 The front-end framework is `bootstrap#v4.0.0-alpha`.
@@ -12,6 +11,22 @@ The front-end framework is `bootstrap#v4.0.0-alpha`.
 It uses IIFE's to manage global variables.
 
 Uses Lo-Dash template strings for the grunt [templates](https://lodash.com/docs#template).
+
+## Getting started
+
+To start, clone the app, delete the `.git` directory and `git init`. Then run:
+
+```bash
+npm install
+```
+
+Next run to start a new app run:
+
+```bash
+grunt start --name=chooseName
+```
+
+The app will be created in a new `app` directory.
 
 ## Generators
 
@@ -61,3 +76,7 @@ grunt g:directive --name=directive_name
 ```
 
 This will create both a javascript file and a corresponding view file found in `app/views/directives`.
+
+## Contribute
+
+If there are any issues or you want to add things, please fork and PR.
