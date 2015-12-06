@@ -13,7 +13,7 @@ var tpl = "(function(){\n" +
           "      }\n" +
           "    }\n\n" +
           "    $stateProvider\n" +
-          "      .state('home',  helper('examples#action'))\n\n" +
+          "      .state('home',  helper('statics#home'))\n\n" +
           "      $urlRouterProvider.otherwise('/');\n" +
           "  }\n\n"+
           "  this.config(Router);\n" +

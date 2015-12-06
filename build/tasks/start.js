@@ -20,6 +20,7 @@ module.exports = function (grunt) {
                         base: base,
                         parent: parent,
                         router: router,
+                        name: name,
                         appName: normAppName,
                         jsFolder: jsFolder
                       };
@@ -67,7 +68,8 @@ module.exports = function (grunt) {
     var data   = { 
                     data: {
                       app: config.appName,
-                      router: config.router
+                      router: config.router,
+                      jwt: 'angular-jwt'
                     } 
                  }
     var appTpl = grunt.template.process(tpl, data);
@@ -88,32 +90,6 @@ module.exports = function (grunt) {
     grunt.file.write(config.base + '/config/router.js', routerTpl);
   });
 
-  // grunt.registerTask('constantsFile', 'create constants file', function(){
-  //   var config    = grunt.file.readJSON('./config.json');
-  //   var tpl       = require('../templates/constant_or_value.js');
-  //   var data      = {
-  //                     data: {
-  //                       parent: config.parent,
-  //                       type: "constant"
-  //                     }
-  //                   }
-  //   var constantsTpl = grunt.template.process(tpl, data);
-  //   grunt.file.write(config.base + '/services/constants.js', constantsTpl);
-  // });
-
-  // grunt.registerTask('valuesFile', 'create values file', function(){
-  //   var config    = grunt.file.readJSON('./config.json');
-  //   var tpl       = require('../templates/constant_or_value.js');
-  //   var data      = {
-  //                     data: {
-  //                       parent: config.parent,
-  //                       type: "value"
-  //                     }
-  //                   }
-  //   var constantsTpl = grunt.template.process(tpl, data);
-  //   grunt.file.write(config.base + '/services/values.js', constantsTpl);
-  // });
-
   grunt.registerTask('indexFile', 'create a root index.html file', function(){
     var config    = grunt.file.readJSON('./config.json');
     var tpl       = require("../templates/index.html.js");
@@ -128,5 +104,54 @@ module.exports = function (grunt) {
     grunt.file.write('./index.html', indexTpl);
   });
 
-  grunt.registerTask('start', 'create app and angular folders', ['config.json', 'publicFolders', 'appFolders', 'mainFile', 'routerFile', 'indexFile']);
+  grunt.registerTask('headerFile', 'create a header partial', function(){
+    var tpl = require('../templates/header.html.js');
+    var headerTpl = grunt.template.process(tpl);
+    grunt.file.write('app/public/views/shared/header.html', headerTpl);
+  });
+
+  grunt.registerTask('footerFile', 'create a footer partial', function(){
+    var tpl = require('../templates/footer.html.js');
+    var footerTpl = grunt.template.process(tpl);
+    grunt.file.write('app/public/views/shared/footer.html', footerTpl);
+  });
+
+  grunt.registerTask('style.scss', 'create a style.scss file', function(){
+    grunt.file.write('app/public/stylesheets/scss/style.scss');
+  });
+
+  grunt.registerTask('staticsController', 'create a Statics Controller', function() {
+    var exec = require('child_process').exec;
+    var cb = this.async();
+    exec('grunt g:controller --name=statics', function(err, stdout, stderr) {
+      console.log(stdout);
+      cb();
+    });
+    grunt.file.write('app/public/views/statics/home.html');
+  });
+
+  grunt.registerTask('bowerInstall', 'install the frontend dependencies', function() {
+    var exec = require('child_process').exec;
+    var cb = this.async();
+    exec('bower install', function(err, stdout, stderr) {
+      console.log(stdout);
+      cb();
+    });
+  });
+
+  var tasks = [
+                'config.json', 
+                'publicFolders', 
+                'appFolders', 
+                'mainFile', 
+                'routerFile', 
+                'indexFile',
+                'headerFile',
+                'footerFile',
+                'style.scss',
+                'staticsController',
+                'bowerInstall'
+              ]
+
+  grunt.registerTask('start', 'create app and angular folders', tasks);
 }
