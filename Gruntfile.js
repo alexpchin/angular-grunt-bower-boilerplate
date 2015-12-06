@@ -30,6 +30,7 @@ module.exports = function(grunt) {
         files: {
           'app/public/stylesheets/app.min.css': [
           'app/public/components/**/bootstrap.min.css',
+          'app/public/stylesheets/**/*.scss',
           'app/public/stylesheets/**/*.css'
           ]
         }

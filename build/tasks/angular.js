@@ -43,6 +43,7 @@ module.exports = function(grunt) {
     // Setup template data
     var data          = {};
     data.name         = camelCaseName;
+    data.nameType     = camelCaseName + typeCaps;
     data.type         = type;
     data.constructor  = constructor || 'ConstructorFunc';
     data.app          = config.appName;

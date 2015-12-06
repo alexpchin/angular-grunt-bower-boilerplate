@@ -11,7 +11,7 @@ module.exports = function(data){
         "  <%= constructor %>.$inject = [];\n" +
         "  function <%= constructor %>() {\n" +
         "  }\n\n" +
-        "  this.<%= type %>('<%= name %>', <%= constructor %>);\n" +
+        "  this.<%= type %>('<%= nameType %>', <%= constructor %>);\n" +
         "}).call(require('<%= parent %>'));";
   }
   return tpl;

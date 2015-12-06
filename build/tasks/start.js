@@ -10,7 +10,7 @@ module.exports = function (grunt) {
     var root        = grunt.option("root")   || 'app/public';
     var appName     = grunt.option("name")   || 'app';
     var name        = humanize(appName)      || 'App';
-    var parent      = grunt.option("main")   || "./app.js";
+    var parent      = grunt.option("main")   || "../app.js";
     var router      = grunt.option("router") || 'ui.router';
     var normAppName = camelCase(appName);
     var jsFolder    = root + '/javascripts';
@@ -32,6 +32,7 @@ module.exports = function (grunt) {
     
     grunt.file.mkdir(root + '/components');
     grunt.file.mkdir(root + '/stylesheets');
+    grunt.file.mkdir(root + '/stylesheets/scss');
     grunt.file.mkdir(root + '/javascripts');
     grunt.file.mkdir(root + '/images');
     grunt.file.mkdir(root + '/views');
