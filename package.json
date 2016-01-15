@@ -5,11 +5,12 @@
   "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  }, 
+  },
   "author": "Alex Chin",
   "license": "ISC",
   "devDependencies": {
     "grunt": "^0.4.5",
+    "grunt-bower-concat": "^0.6.0",
     "grunt-browserify": "^3.3.0",
     "grunt-cli": "^0.1.13",
     "grunt-contrib-cssmin": "^0.12.1",

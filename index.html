@@ -1,0 +1,13 @@
+<!doctype html>
+<html ng-app='minimalAngular'>
+<head>
+  <title> </title>
+  <link rel='stylesheet' type='text/css' href='app/public/stylesheets/app.min.css'>
+  <script type='text/javascript' src='./app/public/javascripts/index.js'></script>
+</head>
+<body>
+  <header ng-include="'app/public/views/shared/header.html'"></header>
+  <main class='container' ui-view></main>
+  <footer class='container' ng-include="'app/public/views/shared/footer.html'"></footer>
+</body>
+</html>

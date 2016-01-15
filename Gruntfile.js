@@ -11,15 +11,23 @@ module.exports = function(grunt) {
         }
       }
     },
+    bower_concat: {
+      all: {
+        dest: 'app/public/javascripts/bower.js',
+        dependencies: {
+          'bootstrap': 'jquery'
+        }
+      }
+    },
     browserify: {
       dist: {
         files: browserifyHelper('index.js', [
-          { path: 'angular/angular.js', component: true },
-          { path: 'angular-ui-router/release/angular-ui-router.js', component: true },
-          { path: 'angular-resource/angular-resource.min.js', component: true },
-          { path: 'jquery/dist/jquery.min.js', component: true },
-          { path: 'angular-jwt/dist/angular-jwt.min.js', component: true },
-          { path: 'bootstrap/dist/js/bootstrap.min.js', component: true},
+          // { path: 'angular/angular.js', component: true },
+          // { path: 'angular-ui-router/release/angular-ui-router.js', component: true },
+          // { path: 'angular-resource/angular-resource.min.js', component: true },
+          // { path: 'jquery/dist/jquery.min.js', component: true },
+          // { path: 'angular-jwt/dist/angular-jwt.min.js', component: true },
+          // { path: 'bootstrap/dist/js/bootstrap.min.js', component: true},
           { path: '**/*.js' },
           { path: '!index.js' }
         ])
@@ -63,14 +71,12 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-sass');
-  grunt.loadNpmTasks('grunt-contrib-watch');
+  // grunt.loadNpmTasks('grunt-contrib-sass');
+  // grunt.loadNpmTasks('grunt-contrib-watch');
+  // grunt.loadNpmTasks('grunt-bower-concat');
 
   // https://github.com/sindresorhus/load-grunt-tasks
-  require('load-grunt-tasks')(grunt, {
-    pattern: 'grunt-*',
-    scope: 'devDependencies'
-  });
+  require('load-grunt-tasks')(grunt);
 
   grunt.loadTasks('build/tasks');
 }
