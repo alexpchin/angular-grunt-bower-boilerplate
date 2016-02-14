@@ -14,20 +14,15 @@ module.exports = function(grunt) {
     bower_concat: {
       all: {
         dest: 'app/public/javascripts/bower.js',
-        dependencies: {
-          'bootstrap': 'jquery'
-        }
+        // dependencies: {
+        //   'bootstrap': 'jquery'
+        // }
       }
     },
     browserify: {
       dist: {
         files: browserifyHelper('index.js', [
-          // { path: 'angular/angular.js', component: true },
-          // { path: 'angular-ui-router/release/angular-ui-router.js', component: true },
-          // { path: 'angular-resource/angular-resource.min.js', component: true },
-          // { path: 'jquery/dist/jquery.min.js', component: true },
-          // { path: 'angular-jwt/dist/angular-jwt.min.js', component: true },
-          // { path: 'bootstrap/dist/js/bootstrap.min.js', component: true},
+          { path: 'bower.js' },
           { path: '**/*.js' },
           { path: '!index.js' }
         ])

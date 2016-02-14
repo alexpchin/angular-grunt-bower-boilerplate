@@ -1,1 +1,1 @@
-{"root":"app/public","base":"app/public/javascripts/minimal_angular","parent":"../app.js","router":"ui.router","name":" ","appName":"minimalAngular","jsFolder":"app/public/javascripts"}
+{"root":"app/public","base":"app/public/javascripts/random","parent":"../app.js","router":"ui.router","name":"App","appName":"random","jsFolder":"app/public/javascripts"}
